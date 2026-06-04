@@ -74,11 +74,6 @@ class Player(Entity):
             moving = True
 
         if keys[pygame.K_d]:
-
-            self.rect.x += self.speed
-
-            self.facing_right = True
-
             moving = True
             moving_right = True
 

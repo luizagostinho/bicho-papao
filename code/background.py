@@ -27,3 +27,4 @@ class Background:
 
         if self.x <= -WIN_WIDTH:
             self.x = 0
+

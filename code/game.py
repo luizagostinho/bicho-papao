@@ -8,6 +8,7 @@ from code.background import Background
 class Game:
 
     def __init__(self, screen):
+        self.camera_limit = 250
 
         self.screen = screen
 
