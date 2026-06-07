@@ -48,7 +48,7 @@ Ao perder todas as vidas, o jogador é levado para uma tela de **Game Over** com
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/bicho-papao.git
+git clone https://github.com/luizagostinho/bicho-papao.git
 
 # Entre na pasta
 cd bicho-papao
