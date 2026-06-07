@@ -5,6 +5,9 @@ from code.const import *
 class Menu:
 
     def __init__(self):
+        pygame.mixer.music.load("./asset/music.mp3")
+        pygame.mixer.music.play(-1)  # toca musica no menu
+
 
         self.background = pygame.image.load(
             "asset/background.png"
@@ -16,12 +19,12 @@ class Menu:
         )
 
         self.title_font = pygame.font.Font(
-            "asset/fonts/MedievalSharp.ttf",
+            "asset/fonts/MedievalSharp",
             48
         )
 
         self.option_font = pygame.font.Font(
-            "asset/fonts/MedievalSharp.ttf",
+            "asset/fonts/MedievalSharp",
             28
         )
 

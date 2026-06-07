@@ -7,7 +7,7 @@ class Background:
     def __init__(self):
 
         self.bg = pygame.image.load(
-            "asset/background.png"
+            "asset/background2.png"
         ).convert()
 
         self.bg = pygame.transform.scale(
