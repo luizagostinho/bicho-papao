@@ -5,37 +5,36 @@ from code.menu import Menu
 from code.game import Game
 
 pygame.init()
-
 pygame.mixer.init()
 
-pygame.mixer.music.load(
-    "asset/music1.mp3"
-)
-
-pygame.mixer.music.play(-1)
-
-screen = pygame.display.set_mode(
-    (WIN_WIDTH, WIN_HEIGHT)
-)
-
+screen = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
+pygame.display.set_caption("Bicho Papão")
 
 clock = pygame.time.Clock()
 
-menu = Menu()
-game = Game(screen)
+# estados
+MENU = 0
+PLAYING = 1
+SCORES = 2
 
 state = MENU
+
+menu = Menu(screen)
+game = Game(screen)
+
+pygame.mixer.music.load("asset/music.mp3")
+pygame.mixer.music.play(-1)
 
 running = True
 
 while running:
-
 
     for event in pygame.event.get():
 
         if event.type == pygame.QUIT:
             running = False
 
+        # ================= MENU =================
         if state == MENU:
 
             if event.type == pygame.KEYDOWN:
@@ -51,49 +50,35 @@ while running:
                 if event.key == pygame.K_RETURN:
 
                     if menu.selected == 0:
-
-                        pygame.mixer.music.stop()
-
-                        pygame.mixer.music.load(
-                            "asset/music1.mp3"
-                        )
-
-                        pygame.mixer.music.play(-1)
-
                         state = PLAYING
 
                     elif menu.selected == 1:
                         state = SCORES
 
-    if game.game_over:
+        # ================= GAME =================
+        elif state == PLAYING:
 
-        if event.type == pygame.KEYDOWN:
+            if game.game_state == "game_over":
 
-            if event.key == pygame.K_RETURN:
-                pygame.mixer.music.stop()
+                if event.type == pygame.KEYDOWN:
 
-                pygame.mixer.music.load(
-                    "asset/music.mp3"
-                )
+                    if event.key == pygame.K_RETURN:
 
-                pygame.mixer.music.play(-1)
+                        game = Game(screen)
+                        state = MENU
 
-                menu = Menu()
+                        pygame.mixer.music.load("asset/music.mp3")
+                        pygame.mixer.music.play(-1)
 
-                game = Game(screen)
-
-                state = MENU
+    # ================= UPDATE / DRAW =================
 
     if state == MENU:
-
-        menu.draw(screen)
+        menu.run()
 
     elif state == PLAYING:
-
         game.run()
 
     pygame.display.flip()
-
     clock.tick(60)
 
 pygame.quit()
