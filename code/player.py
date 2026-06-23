@@ -22,7 +22,7 @@ class Player(Entity):
         ).convert_alpha()
 
         self.run = pygame.image.load(
-            "asset/player_run.png"
+            "asset/player_run.png"               # figura do player
         ).convert_alpha()
 
         self.jump = pygame.image.load(
@@ -73,7 +73,7 @@ class Player(Entity):
                 self.attack_timer = 15
 
         if keys[pygame.K_a]:
-            self.rect.x -= self.speed
+            self.rect.x -= self.speed                             # movimentos
             self.facing_right = False
             moving = True
 

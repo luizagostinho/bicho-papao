@@ -11,16 +11,16 @@ class Game:
     def __init__(self, screen):
         self.screen = screen
 
-        # 🎮 estado do jogo
+        # estado do jogo
         self.game_state = "playing"
         self.music_played = False
 
 
-        # 💀 game over
+        # game over
         self.game_over_sound = pygame.mixer.Sound("asset/gameover.mp3")
         self.gameover_played = False
 
-        # 🏆 vitória
+        # vitória
         self.victory_bg = pygame.image.load("asset/victory.png").convert()
         self.victory_bg = pygame.transform.scale(self.victory_bg, (576, 324))
 
@@ -46,7 +46,7 @@ class Game:
             self.backgrounds[lvl] = bg
 
     # =========================
-    # ENEMIES
+    # INIMIGOS
     # =========================
     def spawn_enemy(self):
 
@@ -87,10 +87,10 @@ class Game:
         self.screen.blit(text, (180, 280))
 
     def draw_victory(self):
-        # Fundo da tela
+        # fundo da tela
         self.screen.blit(self.victory_bg, (0, 0))
 
-        # Encontrar o boss na lista de inimigos
+        # encontrar o boss na lista de inimigos
         boss = None
         for enemy in self.enemies:
             if hasattr(enemy, 'hp'):
@@ -134,10 +134,10 @@ class Game:
             pygame.mixer.music.play(-1)
             self.music_played = True
 
-        # Loop normal do jogo, enquanto está no estado "playing"
+        # loop normal do jogo, enquanto está no estado "playing"
         self.player.attack_hit = False
 
-        # Lógica de ataque, spawn, inimigos, etc.
+        # lógica de ataque, spawn, inimigos, etc.
         attack_rect = self.player.get_attack_rect()
         if attack_rect:
             for enemy in self.enemies[:]:
@@ -150,7 +150,7 @@ class Game:
                         self.player.attack_hit = True
                         break
 
-        # Lógica de spawn
+        # lógica de spawn
         if self.transition_cooldown > 0:
             self.transition_cooldown -= 1
 
@@ -159,7 +159,7 @@ class Game:
             self.spawn_enemy()
             self.spawn_timer = 0
 
-        # Dificuldade: ajuste do tempo de spawn
+        # ajuste do tempo de spawn
         self.spawn_delay = {
             1: 120,
             2: 90,

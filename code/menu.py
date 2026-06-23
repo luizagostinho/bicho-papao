@@ -57,7 +57,7 @@ class Menu:
             )
 
         tutorial = self.small_font.render(
-            "A/D - Movimento | SPACE - Pular | J - Ataque",
+            "A/D - Movimento | SPACE - Pular | J - Ataque",      # w/s ficaram no código, mas não se usa kkkk
             True,
             WHITE
         )

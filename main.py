@@ -70,8 +70,6 @@ while running:
                         pygame.mixer.music.load("asset/music.mp3")
                         pygame.mixer.music.play(-1)
 
-    # ================= UPDATE / DRAW =================
-
     if state == MENU:
         menu.run()
 
